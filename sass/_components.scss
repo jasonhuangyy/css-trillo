@@ -116,14 +116,27 @@
 // }
 
 .side-nav {
-  justify-self: stretch;
-  display: block;
+  // justify-self: stretch;
+
+  @media only screen and (max-width: $bp-medium) {
+    display: flex;
+    flex-direction: row;
+  }
 
   &__item {
     position: relative;
 
     &:not(:last-child) {
       margin-bottom: 0.5rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        margin-bottom: 0;
+      }
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      flex: 1;
+      justify-content: center;
     }
   }
 
@@ -166,6 +179,12 @@
 
     position: relative;
     z-index: 10;
+
+    @media only screen and (max-width: $bp-medium) {
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__icon {
@@ -184,11 +203,15 @@
   font-size: 1.2rem;
   align-self: center;
   margin-bottom: 1rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    display: none;
+  }
 }
 
 .gallery {
   display: flex;
-  height: 21rem;
+  // height: 21rem;
   // overflow: hidden;
 
   &__item {
@@ -311,10 +334,20 @@
   gap: 3rem;
   padding: 3rem;
 
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    flex-direction: column;
+  }
+
   .intro {
     background-color: #fff;
     padding: 3rem;
     flex: 2;
+    box-shadow: var(--shadow-light);
 
     &__feature {
       display: flex;
@@ -392,6 +425,11 @@
       position: relative;
       z-index: 10;
       overflow: hidden;
+      box-shadow: var(--shadow-light);
+
+      @media only screen and (max-width: $bp-small) {
+        width: 100%;
+      }
     }
 
     &__card::before {
@@ -465,6 +503,7 @@
   text-transform: uppercase;
   border-radius: 100px;
   border: none;
+  cursor: pointer;
 
   background-image: linear-gradient(
     to right,
@@ -502,7 +541,7 @@
     top: 0;
   }
 
-  &:focus {
+  &:hover {
     outline: none;
     animation: pulsate 1s infinite;
   }
